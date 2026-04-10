@@ -3,11 +3,11 @@
   "outputDirectory": ".",
   "rewrites": [
     {
-      "source": "/apps/toxina-botulinica",
+      "source": "/toxina-botulinica",
       "destination": "/apps/toxina-botulinica/index.html"
     },
     {
-      "source": "/apps/toxina-botulinica/:match*",
+      "source": "/toxina-botulinica/:match*",
       "destination": "/apps/toxina-botulinica/:match*"
     }
   ],
