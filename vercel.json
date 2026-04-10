@@ -1,13 +1,16 @@
 {
-  "version": 2,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/apps/toxina-botulinica/:path*",
-      "destination": "/apps/toxina-botulinica/:path*"
+      "src": "/apps/toxina-botulinica/(.*)",
+      "dest": "/apps/toxina-botulinica/$1"
     },
     {
-      "source": "/",
-      "destination": "/index.html"
+      "src": "/apps/toxina-botulinica",
+      "dest": "/apps/toxina-botulinica/index.html"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
     }
   ]
 }
