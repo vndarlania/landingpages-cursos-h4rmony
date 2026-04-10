@@ -1,25 +1,13 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "apps/toxina-botulinica/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/toxina-botulinica/(.*)",
-      "dest": "/apps/toxina-botulinica/$1"
-    },
-    {
-      "src": "/toxina-botulinica",
-      "dest": "/apps/toxina-botulinica/index.html"
-    }
-  ],
   "rewrites": [
     {
-      "source": "/toxina-botulinica/:path*",
+      "source": "/apps/toxina-botulinica/:path*",
       "destination": "/apps/toxina-botulinica/:path*"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
     }
   ]
 }

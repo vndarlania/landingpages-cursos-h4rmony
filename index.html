@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos Dra. Gabriela do Vale — Clínica H4rmony</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & VARIABLES ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #FFFFFF;
+            --gold-light: #F0F0F0;
+            --gold-dark: #D0D0D0;
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --bg-card: #161616;
+            --bg-card-hover: #1C1C1C;
+            --text-primary: #F5F5F5;
+            --text-secondary: #A0A0A0;
+            --text-muted: #666666;
+            --border: rgba(255, 255, 255, 0.1);
+            --border-strong: rgba(255, 255, 255, 0.25);
+            --glow: rgba(255, 255, 255, 0.05);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== UTILITY ========== */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        .gold-text { color: var(--gold); }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== NOISE OVERLAY ========== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ========== TOP BAR ========== */
+        .top-bar {
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--bg-primary);
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #000000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 6px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-brand:hover { opacity: 0.8; }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 24px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .hero h1 .line-gold {
+            display: block;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 300;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 60px;
+            animation: fadeUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        /* ========== COURSES SECTION ========== */
+        .courses-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .course-card {
+            position: relative;
+            padding: 50px 36px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-card:hover {
+            border-color: var(--border-strong);
+            background: var(--bg-card-hover);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .course-status {
+            display: inline-block;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 6px 16px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-strong);
+        }
+
+        .course-status.active {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .course-status.soon {
+            color: var(--text-muted);
+            border-color: var(--border);
+        }
+
+        .course-card h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .course-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .course-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .course-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .course-features li::before {
+            content: '';
+            flex-shrink: 0;
+            width: 5px;
+            height: 5px;
+            background: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        .course-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            transition: gap 0.3s ease;
+        }
+
+        .course-card:hover .course-cta {
+            gap: 12px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: 50px 0 30px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            background: var(--bg-secondary);
+        }
+
+        .footer-brand {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand .logo-img {
+            height: 100px;
+            width: auto;
+            opacity: 0.9;
+        }
+
+        .footer p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .footer-links {
+            margin: 16px 0;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--gold); }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .logo-img { height: 60px; }
+            .footer-brand .logo-img { height: 80px; }
+            .hero { min-height: auto; padding: 60px 20px; }
+            .courses-section { padding: 70px 0; }
+            .courses-grid { grid-template-columns: 1fr; gap: 20px; }
+            .course-card { padding: 36px 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .logo-img { height: 50px; }
+            .footer-brand .logo-img { height: 70px; }
+            .hero { padding: 50px 16px; }
+            .hero h1 { font-size: clamp(1.8rem, 10vw, 2.8rem); }
+            .hero-sub { font-size: 0.92rem; margin-bottom: 40px; }
+            .section-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+            .course-card { padding: 32px 20px; }
+            .course-card h3 { font-size: clamp(1.3rem, 5vw, 1.7rem); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        Cursos Presenciais — Harmonização Facial — Dra. Gabriela do Vale
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="navbar-brand">
+                <img src="apps/toxina-botulinica/logo.png" alt="Clínica H4rmony" class="logo-img">
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>
+                Cursos de<br>
+                <span class="line-gold">Harmonização Facial</span>
+            </h1>
+            <p class="hero-sub">
+                Imersões práticas e intensivas ministradas pela Dra. Gabriela do Vale.
+                Eleve o nível da sua prática clínica com cursos hands-on e certificação profissional.
+            </p>
+        </div>
+    </section>
+
+    <!-- COURSES -->
+    <section class="courses-section">
+        <div class="container">
+            <div style="text-align: center;" class="animate-on-scroll">
+                <span class="section-label">Nossos Cursos</span>
+                <h2 class="section-title">Escolha sua <span class="gold-text">Imersão</span></h2>
+            </div>
+
+            <div class="courses-grid">
+                <!-- CURSO 1: Toxina Botulínica -->
+                <a href="/apps/toxina-botulinica/" class="course-card animate-on-scroll">
+                    <span class="course-status active">✓ Disponível</span>
+                    <h3>Imersão em<br>Toxina Botulínica</h3>
+                    <p class="course-description">
+                        Domine a aplicação full face com prática real em pacientes.
+                        Uma imersão completa para elevar o nível dos seus resultados clínicos.
+                    </p>
+                    <ul class="course-features">
+                        <li>1 dia de imersão intensiva</li>
+                        <li>Prática hands-on em pacientes</li>
+                        <li>Anatomia facial aplicada</li>
+                        <li>Certificado incluso</li>
+                    </ul>
+                    <span class="course-cta">
+                        Ver detalhes
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+
+                <!-- CURSO 2: Laser (Em breve) -->
+                <div class="course-card animate-on-scroll" style="pointer-events: none; opacity: 0.6;">
+                    <span class="course-status soon">Em Breve</span>
+                    <h3>Imersão em<br>Laser Estético</h3>
+                    <p class="course-description">
+                        Domine as principais técnicas de laser para tratamentos faciais e corporais.
+                        Segurança, protocolos e prática supervisionada.
+                    </p>
+                    <ul class="course-features">
+                        <li>Teoria e prática intensiva</li>
+                        <li>Diversos tipos de laser</li>
+                        <li>Protocolos de segurança</li>
+                        <li>Certificado incluso</li>
+                    </ul>
+                    <span class="course-cta">
+                        Em breve
+                    </span>
+                </div>
+
+                <!-- CURSO 3: Preenchimento (Em breve) -->
+                <div class="course-card animate-on-scroll" style="pointer-events: none; opacity: 0.6;">
+                    <span class="course-status soon">Em Breve</span>
+                    <h3>Imersão em<br>Preenchimento Facial</h3>
+                    <p class="course-description">
+                        Técnicas avançadas de preenchimento com ácido hialurônico.
+                        Harmonização facial completa com prática em pacientes.
+                    </p>
+                    <ul class="course-features">
+                        <li>Técnicas MD Codes</li>
+                        <li>Prática supervisionada</li>
+                        <li>Manejo de complicações</li>
+                        <li>Certificado incluso</li>
+                    </ul>
+                    <span class="course-cta">
+                        Em breve
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">
+                <img src="apps/toxina-botulinica/logo.png" alt="Clínica H4rmony" class="logo-img">
+            </div>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+                <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+            <p>&copy; 2026 Clínica H4rmony · Dra. Gabriela do Vale · Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // ========== SCROLL ANIMATIONS ==========
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
