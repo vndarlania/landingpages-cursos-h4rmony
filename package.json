@@ -1,0 +1,12 @@
+{
+  "name": "cursos-gabriela-vale",
+  "version": "1.0.0",
+  "description": "Monorepo de cursos e landing pages da Dra. Gabriela do Vale",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Development server'",
+    "build": "echo 'Static build - no build step needed'"
+  },
+  "keywords": ["toxina-botulinica", "cursos", "landing-pages"],
+  "author": "Dra. Gabriela do Vale"
+}
