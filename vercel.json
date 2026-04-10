@@ -1,4 +1,14 @@
 {
+  "rewrites": [
+    {
+      "source": "/apps/toxina-botulinica",
+      "destination": "/apps/toxina-botulinica/index.html"
+    },
+    {
+      "source": "/apps/toxina-botulinica/:match*",
+      "destination": "/apps/toxina-botulinica/:match*"
+    }
+  ],
   "cleanUrls": true,
   "trailingSlash": false
 }
