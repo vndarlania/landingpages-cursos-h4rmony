@@ -1,16 +1,4 @@
 {
-  "routes": [
-    {
-      "src": "/apps/toxina-botulinica/(.*)",
-      "dest": "/apps/toxina-botulinica/$1"
-    },
-    {
-      "src": "/apps/toxina-botulinica",
-      "dest": "/apps/toxina-botulinica/index.html"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
-    }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
