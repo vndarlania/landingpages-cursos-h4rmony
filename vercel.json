@@ -1,4 +1,6 @@
 {
+  "buildCommand": null,
+  "installCommand": "echo 'Static site - no dependencies'",
   "rewrites": [
     {
       "source": "/toxina-botulinica",
