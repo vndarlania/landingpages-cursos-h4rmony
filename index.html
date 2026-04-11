@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos Dra. Gabriela do Vale — Clínica H4rmony</title>
+    <title>Cursos Dra. Gabriela do Valle — Clínica H4rmony</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -92,18 +92,6 @@
             z-index: 9999;
         }
 
-        /* ========== TOP BAR ========== */
-        .top-bar {
-            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
-            text-align: center;
-            padding: 10px 20px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--bg-primary);
-        }
-
         /* ========== NAVBAR ========== */
         .navbar {
             position: sticky;
@@ -138,13 +126,14 @@
         /* ========== HERO ========== */
         .hero {
             position: relative;
-            min-height: 80vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 100px 24px;
+            padding: 80px 24px 60px;
             overflow: hidden;
+            background: linear-gradient(180deg, rgba(10, 10, 10, 1) 0%, rgba(16, 16, 16, 1) 100%);
         }
 
         .hero::before {
@@ -153,11 +142,23 @@
             top: -50%;
             left: 50%;
             transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
+            width: 1000px;
+            height: 1000px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
             pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.3;
         }
 
         .hero h1 {
@@ -188,8 +189,22 @@
 
         /* ========== COURSES SECTION ========== */
         .courses-section {
-            padding: 100px 0;
+            padding: 60px 0;
             position: relative;
+            background: linear-gradient(180deg, rgba(16, 16, 16, 1) 0%, rgba(10, 10, 10, 1) 100%);
+        }
+
+        .courses-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .courses-grid {
@@ -197,6 +212,9 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 50px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .course-card {
@@ -222,8 +240,25 @@
             transition: transform 0.4s ease;
         }
 
+        .course-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.03), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
         .course-card:hover::before {
             transform: scaleX(1);
+        }
+
+        .course-card:hover::after {
+            opacity: 1;
         }
 
         .course-card:hover {
@@ -328,6 +363,7 @@
             height: 100px;
             width: auto;
             opacity: 0.9;
+            border-radius: 50%;
         }
 
         .footer p {
@@ -355,35 +391,152 @@
 
         .footer-links a:hover { color: var(--gold); }
 
+        /* ========== INSTRUCTOR ========== */
+        .instructor-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instructor-section::before {
+            content: '';
+            position: absolute;
+            right: -200px;
+            top: -200px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+        }
+
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .instructor-photo {
+            position: relative;
+        }
+
+        .instructor-photo img {
+            width: 100%;
+            max-width: 220px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
+            margin: 0 auto;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .instructor-info .section-title {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+        }
+
+        .instructor-bio {
+            color: var(--text-secondary);
+            font-weight: 300;
+            font-size: 1rem;
+            margin-bottom: 28px;
+        }
+
+        .credentials {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .credentials li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .credentials li::before {
+            content: '';
+            flex-shrink: 0;
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        /* ========== FLOATING WHATSAPP BUTTON ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        @keyframes pulse-whatsapp {
+            0%, 100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6); }
+        }
+
         /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
             .logo-img { height: 60px; }
             .footer-brand .logo-img { height: 80px; }
-            .hero { min-height: auto; padding: 60px 20px; }
-            .courses-section { padding: 70px 0; }
+            .hero { min-height: auto; padding: 60px 20px 50px; }
+            .courses-section { padding: 50px 0; }
             .courses-grid { grid-template-columns: 1fr; gap: 20px; }
             .course-card { padding: 36px 24px; }
+            .instructor-section { padding: 60px 0; }
+            .instructor-grid { grid-template-columns: 1fr; gap: 36px; }
+            .instructor-photo { order: -1; max-width: 320px; margin: 0 auto; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 56px; height: 56px; }
+            .whatsapp-float svg { width: 29px; height: 29px; }
         }
 
         @media (max-width: 480px) {
             .logo-img { height: 50px; }
             .footer-brand .logo-img { height: 70px; }
-            .hero { padding: 50px 16px; }
+            .hero { padding: 50px 16px 40px; }
             .hero h1 { font-size: clamp(1.8rem, 10vw, 2.8rem); }
-            .hero-sub { font-size: 0.92rem; margin-bottom: 40px; }
+            .hero-sub { font-size: 0.92rem; margin-bottom: 30px; }
             .section-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
             .course-card { padding: 32px 20px; }
             .course-card h3 { font-size: clamp(1.3rem, 5vw, 1.7rem); }
+            .courses-section { padding: 40px 0; }
+            .instructor-section { padding: 50px 0; }
+            .whatsapp-float { bottom: 16px; right: 16px; width: 52px; height: 52px; }
+            .whatsapp-float svg { width: 26px; height: 26px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- TOP BAR -->
-    <div class="top-bar">
-        Cursos Presenciais — Harmonização Facial — Dra. Gabriela do Vale
-    </div>
 
     <!-- NAVBAR -->
     <nav class="navbar">
@@ -397,14 +550,31 @@
     <!-- HERO -->
     <section class="hero">
         <div class="container">
+            <div style="display: inline-block; margin-bottom: 20px;">
+                <div style="width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto;"></div>
+            </div>
             <h1>
                 Cursos de<br>
                 <span class="line-gold">Harmonização Facial</span>
             </h1>
             <p class="hero-sub">
-                Imersões práticas e intensivas ministradas pela Dra. Gabriela do Vale.
+                Imersões práticas e intensivas ministradas pela Dra. Gabriela do Valle.<br>
                 Eleve o nível da sua prática clínica com cursos hands-on e certificação profissional.
             </p>
+            <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap; opacity: 0.6;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 900; color: var(--gold);">100%</div>
+                    <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted);">Prática</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 900; color: var(--gold);">+3k</div>
+                    <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted);">Alunos</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 900; color: var(--gold);">Cert.</div>
+                    <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted);">Incluso</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -414,6 +584,7 @@
             <div style="text-align: center;" class="animate-on-scroll">
                 <span class="section-label">Nossos Cursos</span>
                 <h2 class="section-title">Escolha sua <span class="gold-text">Imersão</span></h2>
+                <div style="width: 80px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 20px auto 0;"></div>
             </div>
 
             <div class="courses-grid">
@@ -422,57 +593,62 @@
                     <span class="course-status active">✓ Disponível</span>
                     <h3>Imersão em<br>Toxina Botulínica</h3>
                     <p class="course-description">
-                        Domine a aplicação full face com prática real em pacientes.
-                        Uma imersão completa para elevar o nível dos seus resultados clínicos.
+                        Imersão prática e intensiva focada em técnicas avançadas de aplicação de toxina botulínica em toda a face. Aprenda com anatomia aplicada, protocolos completos e prática supervisionada em pacientes reais.
                     </p>
                     <ul class="course-features">
-                        <li>1 dia de imersão intensiva</li>
-                        <li>Prática hands-on em pacientes</li>
-                        <li>Anatomia facial aplicada</li>
-                        <li>Certificado incluso</li>
+                        <li>Anatomia Facial Aplicada - Estudo detalhado da musculatura e pontos de aplicação</li>
+                        <li>Técnicas de Aplicação Full Face - Protocolos completos para terço superior, médio e inferior</li>
+                        <li>Prática em Pacientes Reais - Aplicação supervisionada com acompanhamento hands-on</li>
+                        <li>Manejo de Complicações - Prevenção, identificação e conduta em intercorrências</li>
+                        <li>Dosimetria e Diluição - Cálculos precisos para cada região e biótipo facial</li>
                     </ul>
                     <span class="course-cta">
                         Ver detalhes
                         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </span>
                 </a>
+            </div>
 
-                <!-- CURSO 2: Laser (Em breve) -->
-                <div class="course-card animate-on-scroll" style="pointer-events: none; opacity: 0.6;">
-                    <span class="course-status soon">Em Breve</span>
-                    <h3>Imersão em<br>Laser Estético</h3>
-                    <p class="course-description">
-                        Domine as principais técnicas de laser para tratamentos faciais e corporais.
-                        Segurança, protocolos e prática supervisionada.
-                    </p>
-                    <ul class="course-features">
-                        <li>Teoria e prática intensiva</li>
-                        <li>Diversos tipos de laser</li>
-                        <li>Protocolos de segurança</li>
-                        <li>Certificado incluso</li>
-                    </ul>
-                    <span class="course-cta">
-                        Em breve
-                    </span>
+            <!-- Mensagem de novos cursos -->
+            <div style="text-align: center; margin-top: 60px;" class="animate-on-scroll">
+                <p style="color: var(--text-secondary); font-size: 0.95rem; font-weight: 300;">
+                    Novos cursos e imersões em breve. Acompanhe nossas redes sociais para ficar por dentro dos lançamentos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTRUTORA -->
+    <section class="instructor-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;" class="animate-on-scroll">
+                <span class="section-label">Quem Ensina</span>
+                <h2 class="section-title">Conheça sua <span class="gold-text">Instrutora</span></h2>
+                <div style="width: 80px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 20px auto 0;"></div>
+            </div>
+
+            <div class="instructor-grid">
+                <div class="instructor-photo animate-on-scroll">
+                    <img src="apps/toxina-botulinica/assets/images/dra-gabi.JPEG" alt="Dra. Gabriella do Valle">
                 </div>
-
-                <!-- CURSO 3: Preenchimento (Em breve) -->
-                <div class="course-card animate-on-scroll" style="pointer-events: none; opacity: 0.6;">
-                    <span class="course-status soon">Em Breve</span>
-                    <h3>Imersão em<br>Preenchimento Facial</h3>
-                    <p class="course-description">
-                        Técnicas avançadas de preenchimento com ácido hialurônico.
-                        Harmonização facial completa com prática em pacientes.
+                <div class="instructor-info animate-on-scroll">
+                    <h2 class="section-title">
+                        <span class="gold-text">Dra. Gabi do Valle</span>
+                    </h2>
+                    <p class="instructor-bio">
+                        Profissional referência em harmonização facial e toxina botulínica, com formação completa em múltiplas áreas da saúde e especialização em anatomia aplicada.
                     </p>
-                    <ul class="course-features">
-                        <li>Técnicas MD Codes</li>
-                        <li>Prática supervisionada</li>
-                        <li>Manejo de complicações</li>
-                        <li>Certificado incluso</li>
+                    <div class="divider"></div>
+                    <ul class="credentials">
+                        <li>Cirurgiã Dentista</li>
+                        <li>Biomédica</li>
+                        <li>Especialista em Anatomia de Cabeça e Pescoço</li>
+                        <li>Especialista em HOF (Harmonização Orofacial)</li>
+                        <li>+10 anos de experiência clínica</li>
+                        <li>+3.000 alunos mentorados</li>
+                        <li>+15.000 pacientes atendidos</li>
+                        <li>Speaker Milimetric</li>
                     </ul>
-                    <span class="course-cta">
-                        Em breve
-                    </span>
                 </div>
             </div>
         </div>
@@ -482,15 +658,23 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-brand">
-                <img src="apps/toxina-botulinica/logo.png" alt="Clínica H4rmony" class="logo-img">
+                <img src="apps/toxina-botulinica/assets/images/logo-footer.jpg" alt="Clínica H4rmony" class="logo-img">
             </div>
             <div class="footer-links">
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
-                <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="https://www.instagram.com/dragabidovalle/" target="_blank" rel="noopener">@dragabidovalle</a>
+                <a href="https://www.instagram.com/clinicah4rmony/" target="_blank" rel="noopener">@clinicah4rmony</a>
+                <a href="https://wa.me/5521960199238" target="_blank" rel="noopener">WhatsApp</a>
             </div>
-            <p>&copy; 2026 Clínica H4rmony · Dra. Gabriela do Vale · Todos os direitos reservados</p>
+            <p>&copy; 2026 Clínica H4rmony · Dra. Gabriela do Valle · Todos os direitos reservados</p>
         </div>
     </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/5521960199238?text=Ol%C3%A1!%20Tenho%20interesse%20nos%20cursos%20da%20Cl%C3%ADnica%20H4rmony" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.924 0-7.435 6.050-13.485 13.485-13.485s13.485 6.050 13.485 13.485c0 7.435-6.050 13.485-13.485 13.485zM21.960 19.038c-0.316-0.158-1.875-0.925-2.168-1.031-0.292-0.105-0.503-0.158-0.715 0.158s-0.821 1.031-1.008 1.242c-0.186 0.211-0.372 0.238-0.688 0.079s-1.342-0.494-2.555-1.575c-0.943-0.841-1.581-1.881-1.767-2.196s-0.020-0.487 0.139-0.645c0.142-0.142 0.316-0.372 0.474-0.558s0.211-0.316 0.316-0.527c0.105-0.211 0.053-0.396-0.026-0.555s-0.715-1.723-0.982-2.358c-0.257-0.618-0.519-0.534-0.715-0.544-0.185-0.009-0.396-0.011-0.608-0.011s-0.556 0.079-0.848 0.396c-0.292 0.316-1.114 1.089-1.114 2.654s1.140 3.078 1.299 3.289c0.158 0.211 2.237 3.416 5.418 4.788 0.757 0.327 1.348 0.522 1.809 0.668 0.761 0.242 1.453 0.208 2.0 0.126 0.61-0.091 1.875-0.767 2.139-1.508s0.264-1.375 0.185-1.508c-0.079-0.132-0.292-0.211-0.608-0.369z"/>
+        </svg>
+    </a>
 
     <!-- SCRIPTS -->
     <script>
