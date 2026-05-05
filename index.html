@@ -238,9 +238,28 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 50px;
-            max-width: 500px;
+            max-width: 1080px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .course-card.soon {
+            cursor: default;
+            opacity: 0.85;
+        }
+
+        .course-card.soon:hover {
+            transform: none;
+            border-color: var(--border);
+            background: var(--bg-card);
+            box-shadow: none;
+        }
+
+        .course-card.soon:hover::before { transform: scaleX(0); }
+        .course-card.soon:hover::after { opacity: 0; }
+
+        .course-card.soon .course-cta {
+            color: var(--text-muted);
         }
 
         .course-card {
@@ -589,7 +608,7 @@
                 <span class="line-gold">Harmonização Facial</span>
             </h1>
             <p class="hero-sub">
-                Imersões práticas e intensivas ministradas pela Dra. Gabriela do Valle e Dra. Mariana Vaz.<br>
+                Imersões práticas e intensivas ministradas pela Dra. Gabriela do Valle.<br>
                 Eleve o nível da sua prática clínica com cursos hands-on e certificação profissional.
             </p>
             <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap; opacity: 0.6;">
@@ -638,6 +657,36 @@
                         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </span>
                 </a>
+
+                <!-- CURSO 2: Tecnologia -->
+                <div class="course-card soon animate-on-scroll">
+                    <span class="course-status soon">Em breve</span>
+                    <h3>Imersão em<br>Tecnologia</h3>
+                    <p class="course-description">
+                        Imersão dedicada às tecnologias e equipamentos de ponta aplicados à estética e harmonização facial. Conteúdo em desenvolvimento.
+                    </p>
+                    <span class="course-cta">Em breve</span>
+                </div>
+
+                <!-- CURSO 3: Biossegurança -->
+                <div class="course-card soon animate-on-scroll">
+                    <span class="course-status soon">Em breve</span>
+                    <h3>Imersão em<br>Biossegurança</h3>
+                    <p class="course-description">
+                        Protocolos de biossegurança aplicados a procedimentos estéticos e harmonização facial. Conteúdo em desenvolvimento.
+                    </p>
+                    <span class="course-cta">Em breve</span>
+                </div>
+
+                <!-- CURSO 4: Preenchimento Avançado -->
+                <div class="course-card soon animate-on-scroll">
+                    <span class="course-status soon">Em breve</span>
+                    <h3>Imersão em<br>Preenchimento Avançado</h3>
+                    <p class="course-description">
+                        Técnicas avançadas de preenchimento facial com ácido hialurônico. Conteúdo em desenvolvimento.
+                    </p>
+                    <span class="course-cta">Em breve</span>
+                </div>
             </div>
 
             <!-- Mensagem de novos cursos -->
@@ -654,7 +703,7 @@
         <div class="container">
             <div style="text-align: center; margin-bottom: 60px;" class="animate-on-scroll">
                 <span class="section-label">Quem Ensina</span>
-                <h2 class="section-title">Suas <span class="gold-text">Instrutoras</span></h2>
+                <h2 class="section-title">Sua <span class="gold-text">Instrutora</span></h2>
             </div>
 
             <!-- Dra. Gabi do Valle -->
@@ -685,33 +734,6 @@
                 </div>
             </div>
 
-            <div style="height: 60px;"></div>
-
-            <!-- Dra. Mari Vaz -->
-            <div class="instructor-grid" style="direction: rtl;">
-                <div class="instructor-photo animate-on-scroll" style="direction: ltr;">
-                    <img src="apps/toxina-botulinica/assets/images/dra-mari.jpg" alt="Dra. Mari Vaz">
-                </div>
-                <div class="instructor-info animate-on-scroll" style="direction: ltr;">
-                    <h2 class="section-title">
-                        <span class="gold-text">Dra. Mari Vaz</span>
-                    </h2>
-                    <p class="instructor-bio">
-                        Especialista em harmonização orofacial com vasta experiência na aplicação de toxina botulínica e procedimentos estéticos avançados.
-                    </p>
-                    <div class="divider"></div>
-                    <ul class="credentials">
-                        <li>Cirurgiã Dentista</li>
-                        <li>Biomédica</li>
-                        <li>Doutorando em Odontologia com ênfase em HOF - UNG</li>
-                        <li>Mestrado em Odontologia com ênfase em Harmonização Orofacial - UNINGÁ</li>
-                        <li>+10 anos de experiência clínica</li>
-                        <li>+6.000 alunos mentorados</li>
-                        <li>+15.000 pacientes atendidos</li>
-                        <li>Speaker Milimetric</li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -726,7 +748,7 @@
                 <a href="https://www.instagram.com/clinicah4rmony/" target="_blank" rel="noopener">@clinicah4rmony</a>
                 <a href="https://wa.me/5521960199238" target="_blank" rel="noopener">WhatsApp</a>
             </div>
-            <p>&copy; 2026 Clínica H4rmony · Dra. Gabriela do Valle e Dra. Mariana Vaz · Todos os direitos reservados</p>
+            <p>&copy; 2026 Clínica H4rmony · Dra. Gabriela do Valle · Todos os direitos reservados</p>
         </div>
     </footer>
 
